@@ -243,8 +243,7 @@ if __name__ == '__main__':
     output = args.output
     keras_weights_file = args.model
 
-    tic = time.time()
-    print('start processing...')
+    loading_timer_start = time.time()
 
     # load model
 
@@ -256,11 +255,16 @@ if __name__ == '__main__':
     # load config
     params, model_params = config_reader()
 
+    loading_timer_stop = time.time()
+    print ('loading time is %.5f' % (loading_timer_stop - loading_timer_start))
+
+    processing_timer_start = time.time()
+    print('start processing...')
     # generate image with body parts
     canvas = process(input_image, params, model_params)
 
-    toc = time.time()
-    print ('processing time is %.5f' % (toc - tic))
+    processing_timer_stop = time.time()
+    print ('processing time is %.5f' % (processing_timer_stop - processing_timer_start))
 
     cv2.imwrite(output, canvas)
 

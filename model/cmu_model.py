@@ -5,7 +5,7 @@ from keras.layers.convolutional import Conv2D
 from keras.layers.pooling import MaxPooling2D
 from keras.layers.merge import Multiply
 from keras.regularizers import l2
-from keras.initializers import random_normal,constant
+from keras.initializers import random_normal, constant
 
 
 def relu(x): return Activation('relu')(x)
