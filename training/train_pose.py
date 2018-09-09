@@ -17,7 +17,7 @@ from training.optimizers import MultiSGD
 from training.dataset import get_dataflow, batch_dataflow
 
 
-batch_size = 5
+batch_size = 8
 base_lr = 4e-5 # 2e-5
 momentum = 0.9
 weight_decay = 5e-4
@@ -228,7 +228,6 @@ if __name__ == '__main__':
 
     loss_funcs = get_loss_funcs()
     model.compile(loss=loss_funcs, optimizer=multisgd, metrics=["accuracy"])
-    # init = tf.global_variables_initializer()
     model.fit_generator(train_gen,
                         steps_per_epoch=train_samples // batch_size,
                         epochs=max_iter,
